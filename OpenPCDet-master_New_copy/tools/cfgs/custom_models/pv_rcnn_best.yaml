@@ -1,12 +1,11 @@
-# Modified version to capture the higher point density of the InnovizOne lidar and the other characteristics of it 
-# and changed to only handle car class.
+# Modified version to only handle car class.
 # After training using this cfg file, it seems that these configurations are not optimal the model and the original cfg is better unlike the
 # case with the pointpillars model. 
 
 CLASS_NAMES: ['car']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom_dataset_Innoviz.yaml  # Updated to the Innoviz configuration
+    _BASE_CONFIG_: cfgs/dataset_configs/custom_dataset.yaml
 
 MODEL:
     NAME: PVRCNN
@@ -44,11 +43,11 @@ MODEL:
                 'class_name': 'car',
                 'anchor_sizes': [[3.9, 1.6, 1.56]],
                 'anchor_rotations': [0, 1.57],
-                'anchor_bottom_heights': [-0.5],  # Adjusted bottom heights similar to PointPillar config
+                'anchor_bottom_heights': [0],
                 'align_center': False,
                 'feature_map_stride': 8,
-                'matched_threshold': 0.6,  # Adjusted threshold based on PointPillar config
-                'unmatched_threshold': 0.45  # Adjusted threshold
+                'matched_threshold': 0.55,
+                'unmatched_threshold': 0.4
             }
         ]
 
@@ -64,14 +63,14 @@ MODEL:
             LOSS_WEIGHTS: {
                 'cls_weight': 1.0,
                 'loc_weight': 2.0,
-                'dir_weight': 0.1,  # Adjusted direction weight
+                'dir_weight': 0.2,
                 'code_weights': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
             }
 
     PFE:
         NAME: VoxelSetAbstraction
         POINT_SOURCE: raw_points
-        NUM_KEYPOINTS: 4096  # Can be increased if necessary for higher point density
+        NUM_KEYPOINTS: 4096
         NUM_OUTPUT_FEATURES: 128
         SAMPLE_METHOD: FPS
 
@@ -134,9 +133,12 @@ MODEL:
             TEST:
                 NMS_TYPE: nms_gpu
                 MULTI_CLASSES_NMS: False
-                NMS_PRE_MAXSIZE: 6000  # Increased for higher density lidar
-                NMS_POST_MAXSIZE: 1000
-                NMS_THRESH: 0.05  # Lowered for higher density point cloud
+#                NMS_PRE_MAXSIZE: 1024
+#                NMS_POST_MAXSIZE: 100
+#                NMS_THRESH: 0.7
+                NMS_PRE_MAXSIZE: 4096
+                NMS_POST_MAXSIZE: 300
+                NMS_THRESH: 0.85
 
         ROI_GRID_POOL:
             GRID_SIZE: 6
@@ -150,7 +152,7 @@ MODEL:
             ROI_PER_IMAGE: 128
             FG_RATIO: 0.5
 
-            SAMPLE_ROI_BY_EACH_CLASS: True
+            SAMPLE_ROI_BY_EACH_CLASS: False
             CLS_SCORE_TYPE: roi_iou
 
             CLS_FG_THRESH: 0.75
@@ -181,16 +183,16 @@ MODEL:
         NMS_CONFIG:
             MULTI_CLASSES_NMS: False
             NMS_TYPE: nms_gpu
-            NMS_THRESH: 0.05  # Increased NMS threshold for point density
-            NMS_PRE_MAXSIZE: 6000  # Increased for higher point cloud density
-            NMS_POST_MAXSIZE: 1000  # Increased post-max size
+            NMS_THRESH: 0.1
+            NMS_PRE_MAXSIZE: 4096
+            NMS_POST_MAXSIZE: 500
 
 OPTIMIZATION:
     BATCH_SIZE_PER_GPU: 2
-    NUM_EPOCHS: 110  # Increased to account for larger dataset and point density
+    NUM_EPOCHS: 80
 
     OPTIMIZER: adam_onecycle
-    LR: 0.003
+    LR: 0.01
     WEIGHT_DECAY: 0.01
     MOMENTUM: 0.9
 
