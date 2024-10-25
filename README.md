@@ -16,4 +16,4 @@ In this repository, you will find our modified configuration for the model and a
 2. **Perform Real-Time Inference**
     - After training your model, follow the instructions in the InferenceOnly_Hailo_Innoviz_PointPillars_POC.ipynb file to achieve real-time inference.
 
-> **Note:** The configuration file for the PointPillars model provided in this repository (''point_pillar_best.yaml'') has been adjusted to best suit our dataset and may not necessarily produce optimal results with your own dataset.
+> **Note:** The configuration file for the PointPillars model provided in this repository (``point_pillar_best.yaml``) has been adjusted to best suit our dataset and may not necessarily produce optimal results with your own dataset.
