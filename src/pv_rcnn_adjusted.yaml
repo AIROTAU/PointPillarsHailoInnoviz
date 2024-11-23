@@ -1,6 +1,5 @@
 # Modified version to only handle car class.
-# After training using this cfg file, it seems that these configurations are not optimal the model and the original cfg is better unlike the
-# case with the pointpillars model. 
+
 
 CLASS_NAMES: ['car']
 

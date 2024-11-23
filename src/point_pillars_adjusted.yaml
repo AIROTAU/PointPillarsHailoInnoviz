@@ -1,12 +1,11 @@
 # Modified version to capture the higher point density of the InnovizOne lidar and the other characteristics of it 
-# and changed to only handle car class.
+# and changed to only handle 'car' class.
 
 CLASS_NAMES: ['car']
 
 DATA_CONFIG: 
     _BASE_CONFIG_: cfgs/dataset_configs/custom_dataset_Innoviz.yaml
     POINT_CLOUD_RANGE: [0, -39.68, -3, 69.12, 39.68, 1]
-    # POINT_CLOUD_RANGE: [0, -40, -3, 70.4, 40, 1]  # Increased range and slightly adjusted lateral range
     DATA_PROCESSOR:
         - NAME: mask_points_and_boxes_outside_range
           REMOVE_OUTSIDE_BOXES: True
@@ -24,12 +23,7 @@ DATA_CONFIG:
             'train': 16000,
             'test': 40000
           }
-          # VOXEL_SIZE: [0.1, 0.1, 4]  # Smaller voxel size to capture higher density points
-          # MAX_POINTS_PER_VOXEL: 64  # Increased from 32 to 64 to accommodate higher point density
-          # MAX_NUMBER_OF_VOXELS: {
-          #     'train': 20000,  # Increased number of voxels for higher density
-          #     'test': 50000
-          # }
+
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['placeholder']
         AUG_CONFIG_LIST:
@@ -91,7 +85,6 @@ MODEL:
                 'class_name': 'car',
                 'anchor_sizes': [[3.9, 1.6, 1.56]],
                 'anchor_rotations': [0, 1.57],
-                # 'anchor_bottom_heights': [-0.6],
                 'anchor_bottom_heights': [-1.13],  # Adjusted bottom height to labeled cars dimensions
                 'align_center': False,
                 'feature_map_stride': 2,
@@ -126,9 +119,6 @@ MODEL:
         NMS_CONFIG:
             MULTI_CLASSES_NMS: False
             NMS_TYPE: nms_gpu
-            # NMS_THRESH: 0.01
-            # NMS_PRE_MAXSIZE: 4096
-            # NMS_POST_MAXSIZE: 500
             NMS_THRESH: 0.05  # Increased NMS threshold to account for higher point density
             NMS_PRE_MAXSIZE: 2000
             NMS_POST_MAXSIZE: 100 

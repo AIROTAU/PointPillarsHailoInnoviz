@@ -1,3 +1,5 @@
+# A script to convert the results of the evaluation to txt files.
+
 import os
 import pickle
 
@@ -37,9 +39,9 @@ def pickle_to_txt(pickle_file, output_dir):
 
 if __name__ == '__main__':
     # Choose output directory for the results txt file:
-    output_dir = "/home/tauproj1/Innoviz_Project/OpenPCDet-master_New_copy/3D_Object_Detector/Evaluation/pvrcnn_evaluations/pvrcnn_best/detector_labels"
+    output_dir = "/path/to/output/directory"
 
     # Write the path to the results pickle file:
-    pickle_file = "/home/tauproj1/Innoviz_Project/OpenPCDet-master_New_copy/3D_Object_Detector/Evaluation/pvrcnn_evaluations/model_outputs/pv_rcnn_test_best/default/eval/eval_with_train/epoch_80/val/result.pkl"
+    pickle_file = "/path/to/results/pickle/file"
     
     pickle_to_txt(pickle_file, output_dir)
