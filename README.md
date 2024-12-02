@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Real-Time 3D Object Detection Using InnovizOne LiDAR and Low-Power Hailo-8 AI Accelerator
 
 ## Abstract
@@ -14,3 +15,6 @@ In this repository, you will find our modified configuration for the model, the 
 Follow the guidlines in ``realtime_3D_detection``.
 
 > **Note:** The configuration file for the PointPillars model provided in this repository (``point_pillar_adjusted.yaml``) has been adjusted to best suit our dataset and may not necessarily produce optimal results with your own dataset.
+=======
+# PointPillarsHailoInnoviz
+>>>>>>> main
