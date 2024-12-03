@@ -7,8 +7,12 @@
 ## Introduction
 This project demonstrates the capability of achieving accurate 3D object detection using low-power chips. We utilized a dataset created from our own recordings with an InnovizOne LiDAR to train the PointPillars model via the OpenPCDet framework. Real-time inference was then performed using our low-power Hailo-8 AI accelerator.
 
-In this repository, you will find our modified configuration for the model, the model's weights, a script for real-time inference using Innoviz data and other relevant resources. This is based on Hailo's great usage example which is available in their application code examples page: [Hailo Application Code Examples](https://github.com/hailo-ai/Hailo-Application-Code-Examples/tree/main)
-.
+In this repository, you will find our modified configuration for the model, the model's weights, a script for real-time inference using Innoviz data and other relevant resources. This is based on Hailo's great usage example which is available in their application code examples page: [Hailo Application Code Examples](https://github.com/hailo-ai/Hailo-Application-Code-Examples/tree/main).
+
+### Exampls
+![3D Object Detection](examples/output1.gif)
+![3D Object Detection](examples/output2.gif)
+![3D Object Detection](examples/output3.gif)
 
 ## Usage
 Under the ``model`` folder you will find the ``results.pkl`` file of the model on the test set and for the model weights you can refer to our drive (https://drive.google.com/drive/folders/1ARZ11_SHJCobjdNrDembuYl2QJ0aRFxf?usp=drive_link) where you will find them (``checkpoint_epoch_80.pth``) and also the ``data`` folder containing the dataset in the format defined for the PCDet framework and the PointPillars model. In addition, we provided some usefull files to help you get started under the ``src`` folder.
