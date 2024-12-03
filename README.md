@@ -11,6 +11,8 @@ In this repository, you will find our modified configuration for the model, the 
 .
 
 ## Usage
-Follow the guidlines in ``realtime_3D_detection``.
+Under the ``model`` folder you will find the ``results.pkl`` file of the model on the test set and for the model weights you can refer to our drive (https://drive.google.com/drive/folders/1ARZ11_SHJCobjdNrDembuYl2QJ0aRFxf?usp=drive_link) where you will find them (``checkpoint_epoch_80.pth``) and also the ``data`` folder containing the dataset in the format defined for the PCDet framework and the PointPillars model. In addition, we provided some usefull files to help you get started under the ``src`` folder.
+
+To kick things off and and try it for yourself, you may follow the guidlines in ``realtime_3D_detection``.
 
 > **Note:** The configuration file for the PointPillars model provided in this repository (``point_pillar_adjusted.yaml``) has been adjusted to best suit our dataset and may not necessarily produce optimal results with your own dataset.
