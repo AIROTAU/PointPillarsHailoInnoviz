@@ -9,7 +9,7 @@ This project demonstrates the capability of achieving accurate 3D object detecti
 
 In this repository, you will find our modified configuration for the model, the model's weights, a script for real-time inference using Innoviz data and other relevant resources. This is based on Hailo's great usage example which is available in their application code examples page: [Hailo Application Code Examples](https://github.com/hailo-ai/Hailo-Application-Code-Examples/tree/main).
 
-### Exampls
+### Examples
 ![3D Object Detection](examples/output1.gif)
 ![3D Object Detection](examples/output2.gif)
 ![3D Object Detection](examples/output3.gif)
